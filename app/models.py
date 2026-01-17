@@ -7,20 +7,26 @@ from app.models import *
 
 
 class DEPT(models.Model):
-    DEPT_NO = models.IntegerField(primary_key=True)     
-    Dname= models.CharField(max_length=100, unique=True)
+    DEPTNO = models.IntegerField(primary_key=True)     
+    DNAME= models.CharField(max_length=100, unique=True)
     LOC = models.CharField(max_length=100, unique=True)
+    
+    def __str__(self):
+        return self.DNAME
 
 
 class EMP(models.Model):
     EMPNO = models.IntegerField(unique=True)
-    Ename = models.CharField(max_length=100)
+    ENAME = models.CharField(max_length=100)
     JOB = models.CharField(max_length=100)
-    MGR = models.IntegerField()
+    MGR = models.IntegerField( null= True)
     HIREDATE  = models.DateField()
     SAL = models.FloatField()
-    Comm = models.IntegerField(null= True)
-    DEPT_NO = models.ForeignKey(DEPT, on_delete= models.CASCADE)
+    COMM= models.IntegerField(null= True)
+    DEPTNO = models.ForeignKey(DEPT, on_delete= models.CASCADE)
+    
+    def __str__(self):
+        return self.ENAME
     
 class SALGRADE(models.Model):
     salg = models.CharField(max_length=10)

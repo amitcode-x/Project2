@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<div class="text-center mt-5">
+    <h1 class="fw-bold text-success">Welcome to Employee Management System</h1>
+
+    <div class="mt-4 d-flex justify-content-center gap-3">
+        <a href="{% url 'Display_emp' %}" class="btn btn-success px-4 py-2">
+            View Employees
+        </a>
+
+        <a href="{% url 'Display_dept' %}" class="btn btn-primary px-4 py-2">
+            View Departments
+        </a>
+    </div>
+</div>
+
+{% endblock %}

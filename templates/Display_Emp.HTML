@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %}Employee Data{% endblock %}
+
+{% block content %}
+
+<div class="card shadow-lg border-0 rounded-4 mt-4">
+
+    <div class="card-header bg-success text-white text-center fs-4 fw-bold">
+        Employee Records
+    </div>
+
+    <div class="card-body">
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover align-middle text-center">
+
+                <thead class="table-success fw-bold">
+                    <tr>
+                        <th>EMPNO</th>
+                        <th>ENAME</th>
+                        <th>JOB</th>
+                        <th>MGR</th>
+                        <th>HIREDATE</th>
+                        <th>SAL</th>
+                        <th>COMM</th>
+                        <th>DEPTNO</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for Empobject in Emps %}
+                    <tr>
+                        <td>{{ Empobject.EMPNO }}</td>
+                        <td class="fw-semibold">{{ Empobject.ENAME }}</td>
+
+                        <td>
+                            <span class="badge bg-primary px-3 py-2">
+                                {{ Empobject.JOB }}
+                            </span>
+                        </td>
+
+                        <td>{{ Empobject.MGR }}</td>
+                        <td>{{ Empobject.HIREDATE }}</td>
+
+                        <td class="text-success fw-bold">
+                            ₹ {{ Empobject.SAL }}
+                        </td>
+
+                        <td>
+                            {% if Empobject.COMM %}
+                                <span class="badge bg-warning text-dark">
+                                    {{ Empobject.COMM }}
+                                </span>
+                            {% else %}
+                                <span class="text-muted">—</span>
+                            {% endif %}
+                        </td>
+
+                        <td>
+                            <span class="badge bg-info text-dark px-3 py-2">
+                                {{ Empobject.DEPTNO }}
+                            </span>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+    <div class="card-footer text-center bg-light">
+        Total Employees: <b>{{ Emps|length }}</b>
+    </div>
+
+</div>
+
+{% endblock %}

@@ -20,7 +20,20 @@ from app.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',check,name='check'),
+    path('',Homepage,name='Homepage'),
+    
+    
+    # Inster data into DEPT table
     path("insert_dept/", insert_dept, name="insert_dept"),
-    path("insert_emp/", insert_emp, name="insert_emp")
+    
+    # Display data from DEPT table
+    path("Display_dept/", Display_dept, name="Display_dept"),
+    
+    # Inster data into EMP table
+    
+    path("insert_emp/", insert_emp, name="insert_emp"),
+    
+    # Display data from EMP table
+    
+    path("Display_emp/", Display_emp, name="Display_emp"),
 ]

@@ -1,10 +1,12 @@
 from django.db import models
 
+
 # Create your models here.
 
 
-from app.models import *
 
+
+# DEPT Model
 
 class DEPT(models.Model):
     DEPTNO = models.IntegerField(primary_key=True)     
@@ -12,14 +14,14 @@ class DEPT(models.Model):
     LOC = models.CharField(max_length=100, unique=True)
     
     def __str__(self):
-        return self.DNAME
+        return f"{self.DEPTNO}"
 
-
+# EMP Model
 class EMP(models.Model):
     EMPNO = models.IntegerField(unique=True)
     ENAME = models.CharField(max_length=100)
     JOB = models.CharField(max_length=100)
-    MGR = models.IntegerField( null= True)
+    MGR = models.IntegerField( null= True, blank= True)
     HIREDATE  = models.DateField()
     SAL = models.FloatField()
     COMM= models.IntegerField(null= True)
@@ -27,6 +29,8 @@ class EMP(models.Model):
     
     def __str__(self):
         return self.ENAME
+    
+
     
 class SALGRADE(models.Model):
     salg = models.CharField(max_length=10)

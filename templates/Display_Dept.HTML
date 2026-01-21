@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Department Data{% endblock %}
+
+{% block content %}
+
+<div class="card shadow-lg border-0 rounded-4 mt-4">
+
+    <div class="card-header bg-success text-white text-center fs-4 fw-bold">
+        Department Records
+    </div>
+
+    <div class="card-body">
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover align-middle text-center">
+
+                <thead class="table-success fw-bold">
+                    <tr>
+                        <th>DEPTNO</th>
+                        <th>DNAME</th>
+                        <th>LOCATION</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for DeptObjects in Depts %}
+                    <tr>
+                        <td class="fw-semibold">{{ DeptObjects.DEPTNO }}</td>
+
+                        <td>
+                            <span class="badge bg-primary px-3 py-2">
+                                {{ DeptObjects.DNAME }}
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="badge bg-info text-dark px-3 py-2">
+                                {{ DeptObjects.LOC }}
+                            </span>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+    <div class="card-footer text-center bg-light">
+        Total Departments: <b>{{ Depts|length }}</b>
+    </div>
+
+</div>
+
+{% endblock %}

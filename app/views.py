@@ -4,11 +4,12 @@ from django.http import HttpResponse
 
 from app.models import *
 
-def check(request):
-    return HttpResponse("hello")
+def Homepage(request):
+    return render(request,'Homepage.HTML')
 
 # Create your views here.
 
+# Insert data into DEPT table
 
 def insert_dept(request):
     print('we have existing dept data')
@@ -24,6 +25,14 @@ def insert_dept(request):
         return HttpResponse("Department data inserted successfully")
     else:
         return HttpResponse("Department data already exists")
+
+# Display data from DEPT table  
+def Display_dept(request):
+    LISTOFDEPT = DEPT.objects.all()
+    data ={"Depts": LISTOFDEPT}
+    return render(request, "Display_Dept.HTML", data)
+
+# Insert data into EMP table
 def insert_emp(request):
     print('Web have existing emp data')
     Existing_emp = EMP.objects.all()
@@ -56,3 +65,13 @@ def insert_emp(request):
             return HttpResponse("Employee data already exists")
     else:
         return HttpResponse("Deptno does not exist. Cannot insert employee data")
+
+# Display data from EMP table
+
+def Display_emp(request):
+    LISTOFEMP = EMP.objects.all()
+    # LISTOFEMP= EMP.objects.filter(ENAME = 'SMITH')
+    # LISTOFEMP = EMP.objects.filter(MGR__gt = 7901)
+    
+    data = {"Emps": LISTOFEMP}
+    return render(request, "Display_Emp.HTML", data)

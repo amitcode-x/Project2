@@ -19,6 +19,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 TEMPLATES_DIR= os.path.join(BASE_DIR, 'templates')
 
+STATIC_DIR= os.path.join(BASE_DIR, 'static')
+
+STATICFILES_DIRS= [STATIC_DIR]
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
@@ -55,6 +59,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'Project2.urls'
+
+import os
+
+TEMPLATES_DIR = os.path.join(BASE_DIR,'templates')
 
 TEMPLATES = [
     {

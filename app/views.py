@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from django.db.models import Q
+
 from django.http import HttpResponse
 
 from app.models import *
@@ -72,6 +74,19 @@ def Display_emp(request):
     LISTOFEMP = EMP.objects.all()
     # LISTOFEMP= EMP.objects.filter(ENAME = 'SMITH')
     # LISTOFEMP = EMP.objects.filter(MGR__gt = 7901)
+    
+    LISTOFEMP = EMP.objects.filter(SAL__gt = 600)
+    
+    # LISTOFEMP = EMP.objects.order_by('ENAME')
+    
+    # LISTOFEMP = EMP.objects.filter(Q(SAL__gt = 1200) & Q(DEPTNO = 20))
+    
+    # LISTOFEMP = EMP.objects.filter(SAL__lte = 1200 , DEPTNO =20)
+    
+    # LISTOFEMP = EMP.objects.filter(Q(SAL__gt = 1200) | Q(DEPTNO = 20))
+    
+    
+    
     
     data = {"Emps": LISTOFEMP}
     return render(request, "Display_Emp.HTML", data)

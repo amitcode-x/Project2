@@ -90,3 +90,7 @@ def Display_emp(request):
     
     data = {"Emps": LISTOFEMP}
     return render(request, "Display_Emp.HTML", data)
+def DisplayEMPTODEPT(request):
+    Quesrysetlistempdeptobject = EMP.objects.select_related('DEPTNO')
+    d = {'Quesrysetlistempdeptobject': Quesrysetlistempdeptobject}
+    return render(request, 'DisplayEMPTODEPT.HTML',d)

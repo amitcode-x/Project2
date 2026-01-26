@@ -36,4 +36,6 @@ urlpatterns = [
     # Display data from EMP table
     
     path("Display_emp/", Display_emp, name="Display_emp"),
+    
+    path("DisplayEMPTODEPT/", DisplayEMPTODEPT, name="DisplayEMPTODEPT")
 ]

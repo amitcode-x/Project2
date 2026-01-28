@@ -44,6 +44,36 @@
                         <a class="nav-link" href="{% url 'Display_dept' %}">Departments</a>
                     </li>
 
+                    <!-- JOIN DROPDOWN -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button"
+                           data-bs-toggle="dropdown">
+                            Joins
+                        </a>
+
+                        <ul class="dropdown-menu shadow">
+
+                            <li>
+                                <a class="dropdown-item" href="{% url 'DisplayEMPTODEPTjoin' %}">
+                                    EMP → DEPT
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="{% url 'DisplayEmpToMgrJoin' %}">
+                                    EMP → MGR
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="{% url 'DisplayEmpDeptMgrJoin' %}">
+                                    EMP → MGR → DEPT
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
                 </ul>
 
                 <!-- Right side -->

@@ -21,14 +21,21 @@ class EMP(models.Model):
     EMPNO = models.IntegerField(unique=True)
     ENAME = models.CharField(max_length=100)
     JOB = models.CharField(max_length=100)
-    MGR = models.IntegerField( null= True, blank= True)
+    MGR = models.ForeignKey(
+        "self",
+        null=True,
+        blank=True,
+        
+        on_delete=models.SET_NULL
+    )
     HIREDATE  = models.DateField()
     SAL = models.FloatField()
     COMM= models.IntegerField(null= True)
     DEPTNO = models.ForeignKey(DEPT, on_delete= models.CASCADE)
     
     def __str__(self):
-        return self.ENAME
+        return str(self.EMPNO)
+
     
 
     

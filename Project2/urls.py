@@ -37,5 +37,8 @@ urlpatterns = [
     
     path("Display_emp/", Display_emp, name="Display_emp"),
     
-    path("DisplayEMPTODEPT/", DisplayEMPTODEPT, name="DisplayEMPTODEPT")
+    path("DisplayEMPTODEPTjoin/", DisplayEMPTODEPTJoin, name="DisplayEMPTODEPTjoin"),
+    
+    path("DisplayEmpToMgrJoin/",DisplayEmpToMgrJoin, name="DisplayEmpToMgrJoin" ),
+    path('DisplayEmpDeptMgrJoin/',DisplayEmpDeptMgrJoin,name='DisplayEmpDeptMgrJoin')
 ]

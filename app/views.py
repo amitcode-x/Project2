@@ -90,7 +90,25 @@ def Display_emp(request):
     
     data = {"Emps": LISTOFEMP}
     return render(request, "Display_Emp.HTML", data)
-def DisplayEMPTODEPT(request):
+def DisplayEMPTODEPTJoin(request):
     Quesrysetlistempdeptobject = EMP.objects.select_related('DEPTNO')
+    
+    
+    
+    # Quesrysetlistempdeptobject = EMP.objects.select_related('DEPTNO').filter(DEPTNO__LOC='DALLAS')
+    
     d = {'Quesrysetlistempdeptobject': Quesrysetlistempdeptobject}
-    return render(request, 'DisplayEMPTODEPT.HTML',d)
+    
+    return render(request, 'DisplayEMPTODEPTjoin.HTML',d)
+
+def DisplayEmpToMgrJoin(request):
+    
+    Quesrysetlistempmgrobject = EMP.objects.select_related('MGR').all()
+    d = {'Quesrysetlistempmgrobject':  Quesrysetlistempmgrobject}
+    return render(request, 'DisplayEmpToMgr.HTML', d)
+
+def DisplayEmpDeptMgrJoin(request):
+    QSEDMO = EMP.objects.select_related('DEPTNO','MGR')
+    
+    d = { 'QSEDMO':QSEDMO }
+    return render(request,'DisplayEmpDeptMgrJoin.html',d)

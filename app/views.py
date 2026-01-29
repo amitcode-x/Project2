@@ -6,6 +6,8 @@ from django.http import HttpResponse
 
 from app.models import *
 
+from django.db.models import Prefetch
+
 def Homepage(request):
     return render(request,'Homepage.HTML')
 
@@ -112,3 +114,18 @@ def DisplayEmpDeptMgrJoin(request):
     
     d = { 'QSEDMO':QSEDMO }
     return render(request,'DisplayEmpDeptMgrJoin.html',d)
+
+
+
+def DisplayDEPTEMPbyPrefetch(request):
+    
+    Querysetoflistofdeptempobject = DEPT.objects.prefetch_related('emp_set').all()
+    
+    Querysetoflistofdeptempobject = DEPT.objects.prefetch_related('emp_set').filter(DNAME__in = ('ACCOUNTING', 'RESEARCH'))
+    
+    Querysetoflistofdeptempobject = DEPT.objects.prefetch_related( Prefetch ('emp_set', queryset= EMP.objects.filter(SAL__gt = 1000)))
+    
+    
+    
+    d = {'Querysetoflistofdeptempobject' : Querysetoflistofdeptempobject}
+    return render(request, 'DisplayDEPTEMPbyPrefetch.html', d)

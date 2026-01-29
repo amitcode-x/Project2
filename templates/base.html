@@ -33,41 +33,62 @@
                 <ul class="navbar-nav me-auto fw-semibold">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'Homepage' %}">Home</a>
+                        <a class="nav-link {% if request.resolver_match.url_name == 'Homepage' %}active{% endif %}"
+                           href="{% url 'Homepage' %}">
+                            Home
+                        </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'Display_emp' %}">Employees</a>
+                        <a class="nav-link {% if request.resolver_match.url_name == 'Display_emp' %}active{% endif %}"
+                           href="{% url 'Display_emp' %}">
+                            Employees
+                        </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'Display_dept' %}">Departments</a>
+                        <a class="nav-link {% if request.resolver_match.url_name == 'Display_dept' %}active{% endif %}"
+                           href="{% url 'Display_dept' %}">
+                            Departments
+                        </a>
                     </li>
 
                     <!-- JOIN DROPDOWN -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button"
-                           data-bs-toggle="dropdown">
+                        <a class="nav-link dropdown-toggle {% if 'Join' in request.resolver_match.url_name %}active{% endif %}"
+                           href="#" role="button" data-bs-toggle="dropdown">
                             Joins
                         </a>
 
                         <ul class="dropdown-menu shadow">
 
                             <li>
-                                <a class="dropdown-item" href="{% url 'DisplayEMPTODEPTjoin' %}">
+                                <a class="dropdown-item"
+                                   href="{% url 'DisplayEMPTODEPTjoin' %}">
                                     EMP → DEPT
                                 </a>
                             </li>
 
                             <li>
-                                <a class="dropdown-item" href="{% url 'DisplayEmpToMgrJoin' %}">
+                                <a class="dropdown-item"
+                                   href="{% url 'DisplayEmpToMgrJoin' %}">
                                     EMP → MGR
                                 </a>
                             </li>
 
                             <li>
-                                <a class="dropdown-item" href="{% url 'DisplayEmpDeptMgrJoin' %}">
+                                <a class="dropdown-item"
+                                   href="{% url 'DisplayEmpDeptMgrJoin' %}">
                                     EMP → MGR → DEPT
+                                </a>
+                            </li>
+
+                            <li><hr class="dropdown-divider"></li>
+
+                            <li>
+                                <a class="dropdown-item"
+                                   href="{% url 'DisplayDEPTEMPbyPrefetch' %}">
+                                    Prefetch Related
                                 </a>
                             </li>
 
@@ -102,5 +123,4 @@
     <script src="{% static 'css/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js' %}"></script>
 
 </body>
-
 </html>

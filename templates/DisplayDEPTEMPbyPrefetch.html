@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block title %}Prefetch Related{% endblock %}
+
+{% block content %}
+
+<div class="card shadow-lg border-0 rounded-4 mt-4">
+
+    <div class="card-header bg-success text-white text-center fs-4 fw-bold">
+        Department → Employees (Prefetch Related)
+    </div>
+
+    <div class="card-body">
+
+        {% for DEO in Querysetoflistofdeptempobject %}
+            {% if DEO.emp_set.all %}
+
+                <!-- Department Header -->
+                <div class="alert alert-success fw-semibold mb-3">
+                    🏢 {{ DEO.DNAME }} — {{ DEO.LOC }}
+                </div>
+
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered table-hover align-middle text-center">
+
+                        <thead class="table-success fw-bold">
+                            <tr>
+                                <th>EMPNO</th>
+                                <th>ENAME</th>
+                                <th>JOB</th>
+                                <th>SAL</th>
+                                <th>COMM</th>
+                                <th>HIREDATE</th>
+                                <th>DEPTNO</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for EO in DEO.emp_set.all %}
+                            <tr>
+                                <td>{{ EO.EMPNO }}</td>
+
+                                <td class="fw-semibold">
+                                    {{ EO.ENAME }}
+                                </td>
+
+                                <td>
+                                    <span class="badge bg-primary px-3 py-2">
+                                        {{ EO.JOB }}
+                                    </span>
+                                </td>
+
+                                <td class="text-success fw-bold">
+                                    ₹ {{ EO.SAL }}
+                                </td>
+
+                                <td>
+                                    {% if EO.COMM %}
+                                        <span class="badge bg-warning text-dark">
+                                            {{ EO.COMM }}
+                                        </span>
+                                    {% else %}
+                                        <span class="text-muted">—</span>
+                                    {% endif %}
+                                </td>
+
+                                <td>{{ EO.HIREDATE }}</td>
+
+                                <td>
+                                    <span class="badge bg-info text-dark px-3 py-2">
+                                        {{ EO.DEPTNO }}
+                                    </span>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+
+                    </table>
+                </div>
+
+            {% endif %}
+        {% endfor %}
+
+    </div>
+
+    <div class="card-footer text-center bg-light">
+        Prefetch Related View (Optimized ORM)
+    </div>
+
+</div>
+
+{% endblock %}

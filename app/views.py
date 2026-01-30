@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from django.db.models import *
+
 from django.db.models import Q
 
 from django.http import HttpResponse
@@ -79,6 +81,8 @@ def Display_emp(request):
     
     LISTOFEMP = EMP.objects.filter(SAL__gt = 600)
     
+  
+    
     # LISTOFEMP = EMP.objects.order_by('ENAME')
     
     # LISTOFEMP = EMP.objects.filter(Q(SAL__gt = 1200) & Q(DEPTNO = 20))
@@ -86,6 +90,14 @@ def Display_emp(request):
     # LISTOFEMP = EMP.objects.filter(SAL__lte = 1200 , DEPTNO =20)
     
     # LISTOFEMP = EMP.objects.filter(Q(SAL__gt = 1200) | Q(DEPTNO = 20))
+    
+    
+    # # 30
+    
+    # mxs = EMP.objects.aggregate(Max('SAL'))
+    # print(mxs)
+    
+   
     
     
     
@@ -129,6 +141,18 @@ def DisplayDEPTEMPbyPrefetch(request):
     Querysetoflistofdeptempobject = DEPT.objects.prefetch_related('emp_set').filter(DNAME__in = ('ACCOUNTING', 'RESEARCH'))
     
     Querysetoflistofdeptempobject = DEPT.objects.prefetch_related( Prefetch ('emp_set', queryset= EMP.objects.filter(SAL__gt = 1000)))
+    
+    
+    davg = EMP.objects.filter(DEPTNO =10).aggregate(Avg('SAL'))
+    print(davg)
+    a = davg['SAL__avg']
+    
+    av = EMP.objects.filter()
+    
+    
+    
+    
+    
     
     
     

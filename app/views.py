@@ -106,6 +106,11 @@ def DisplayEMPTODEPTJoin(request):
 def DisplayEmpToMgrJoin(request):
     
     Quesrysetlistempmgrobject = EMP.objects.select_related('MGR').all()
+    
+    
+    
+    
+    
     d = {'Quesrysetlistempmgrobject':  Quesrysetlistempmgrobject}
     return render(request, 'DisplayEmpToMgr.HTML', d)
 

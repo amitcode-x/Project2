@@ -149,7 +149,7 @@ def DisplayDEPTEMPbyPrefetch(request):
     
     av = EMP.objects.filter()
     
-    
+          
     
     
     

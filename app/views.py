@@ -92,10 +92,7 @@ def Display_emp(request):
     # LISTOFEMP = EMP.objects.filter(Q(SAL__gt = 1200) | Q(DEPTNO = 20))
     
     
-    # # 30
-    
-    # mxs = EMP.objects.aggregate(Max('SAL'))
-    # print(mxs)
+  
     
    
     
@@ -143,17 +140,23 @@ def DisplayDEPTEMPbyPrefetch(request):
     Querysetoflistofdeptempobject = DEPT.objects.prefetch_related( Prefetch ('emp_set', queryset= EMP.objects.filter(SAL__gt = 1000)))
     
     
-    davg = EMP.objects.filter(DEPTNO =10).aggregate(Avg('SAL'))
-    print(davg)
-    a = davg['SAL__avg']
-    
-    av = EMP.objects.filter()
-    
-          
-      
+    # ye hai niche aggregates functions ka example
     
     
+    # davg = EMP.objects.filter(DEPTNO =10).aggregate(Avg('SAL'))
+    # print(davg)
+    # a = davg['SAL__avg']
     
+    # av = EMP.objects.filter()
+    # print(av)
+    
+    
+    # aue ye bhi ahi but dusre tarik se 
+    
+      # # 30
+    
+    # mxs = EMP.objects.aggregate(Max('SAL'))
+    # print(mxs)
     
     
     d = {'Querysetoflistofdeptempobject' : Querysetoflistofdeptempobject}

@@ -50,14 +50,14 @@ def insert_emp(request):
     EJOB = input("Enter emp job: ")
     EMGR = input("Enter emp mgr: ")
     if EMGR:
-        EMGR = int(EMGR)
+        EMGR = int(EMGR)      
     else:
         EMGR = None
     EHIREDATE = input("Enter emp hiredate (YYYY-MM-DD: ")
     ESAL = float(input('Enter emp sal: '))
     ECOMM = input("Enter emp comm: ")
     if ECOMM:
-        ECOMM = int(ECOMM)
+        ECOMM = int(ECOMM)  
     else:
         ECOMM = None
     EDEPTNO = int(input("Enter emp deptno: "))

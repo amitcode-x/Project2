@@ -92,12 +92,6 @@ def Display_emp(request):
     # LISTOFEMP = EMP.objects.filter(Q(SAL__gt = 1200) | Q(DEPTNO = 20))
     
     
-  
-    
-   
-    
-    
-    
     
     data = {"Emps": LISTOFEMP}
     return render(request, "Display_Emp.HTML", data)

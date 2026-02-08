@@ -116,7 +116,7 @@ def DisplayEmpToMgrJoin(request):
     
     d = {'Quesrysetlistempmgrobject':  Quesrysetlistempmgrobject}
     return render(request, 'DisplayEmpToMgr.HTML', d)
-
+       
 def DisplayEmpDeptMgrJoin(request):
     QSEDMO = EMP.objects.select_related('DEPTNO','MGR')
     
